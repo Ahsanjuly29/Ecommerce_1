@@ -17,8 +17,6 @@
 @endsection
 <!-- End plugin css for this page -->
 
-
-
 @section('main-content')
     <div class="content-wrapper">
         <div class="row">
