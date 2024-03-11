@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CapacityType extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['slug'];
 }

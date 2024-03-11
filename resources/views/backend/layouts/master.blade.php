@@ -5,17 +5,19 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <title>@yield('page-title') My Finance/Accounts</title>
+    <title>
+        {{ ucwords(str_replace('-', ' ', last(request()->segments()))) }} | My Finance/Accounts
+    </title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    {{-- <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
 
     <!-- common plugins:css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
+
+    <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
     <!-- end common plugins -->
 
     <!-- Plugin css for this page -->
@@ -24,7 +26,7 @@
 
     @yield('custom-css')
 
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 </head>
 
 <body>
@@ -32,17 +34,19 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg"
-                        alt="logo" /></a>
-                <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
-                        alt="logo" /></a>
+                <a class="sidebar-brand brand-logo" href="index.html">
+                    <img src="{{ asset('assets/images/logo.svg') }}" alt="logo" />\
+                </a>
+                <a class="sidebar-brand brand-logo-mini" href="index.html">
+                    <img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" />
+                </a>
             </div>
             <ul class="nav">
-                <li class="nav-item profile">
+                {{-- <li class="nav-item profile">
                     <div class="profile-desc">
                         <div class="profile-pic">
                             <div class="count-indicator">
-                                <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                                <img class="img-xs rounded-circle " src="{{ asset('assets/images/faces/face15.jpg') }}" alt="">
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
@@ -88,10 +92,11 @@
                             </a>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item nav-category">
+                </li> --}}
+                {{-- <li class="nav-item nav-category">
                     <span class="nav-link">Navigation</span>
-                </li>
+                </li> --}}
+
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="index.html">
                         <span class="menu-icon">
@@ -106,84 +111,26 @@
                         <span class="menu-icon">
                             <i class="mdi mdi-laptop"></i>
                         </span>
-                        <span class="menu-title">Basic UI Elements</span>
+                        <span class="menu-title">Settings</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('capacity-type-index') }}">
+                                    <span class="">
+                                        <i class="mdi mdi-laptop"></i>
+                                    </span>
+                                    <span class="ml-1">Capacity</span>
+                                </a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link"
+                            {{-- <li class="nav-item">
+                                <a class="nav-link"
                                     href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
                             <li class="nav-item"> <a class="nav-link"
-                                    href="pages/ui-features/typography.html">Typography</a></li>
+                                    href="pages/ui-features/typography.html">Typography</a></li> --}}
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-playlist-play"></i>
-                        </span>
-                        <span class="menu-title">Form Elements</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/tables/basic-table.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-table-large"></i>
-                        </span>
-                        <span class="menu-title">Tables</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/charts/chartjs.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-chart-bar"></i>
-                        </span>
-                        <span class="menu-title">Charts</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/icons/mdi.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-contacts"></i>
-                        </span>
-                        <span class="menu-title">Icons</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                        aria-controls="auth">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-security"></i>
-                        </span>
-                        <span class="menu-title">User Pages</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank
-                                    Page </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a>
-                            </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a>
-                            </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
-                            </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register
-                                </a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link"
-                        href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-file-document-box"></i>
-                        </span>
-                        <span class="menu-title">Documentation</span>
-                    </a>
                 </li>
             </ul>
         </nav>
@@ -192,8 +139,8 @@
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar p-0 fixed-top d-flex flex-row">
                 <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-                    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
-                            alt="logo" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                            src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /></a>
                 </div>
                 <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button"
@@ -268,7 +215,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                        <img src="assets/images/faces/face4.jpg" alt="image"
+                                        <img src="{{ asset('assets/images/faces/face4.jpg') }}" alt="image"
                                             class="rounded-circle profile-pic">
                                     </div>
                                     <div class="preview-item-content">
@@ -279,7 +226,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                        <img src="assets/images/faces/face2.jpg" alt="image"
+                                        <img src="{{ asset('assets/images/faces/face2.jpg') }}" alt="image"
                                             class="rounded-circle profile-pic">
                                     </div>
                                     <div class="preview-item-content">
@@ -290,7 +237,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
-                                        <img src="assets/images/faces/face3.jpg" alt="image"
+                                        <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image"
                                             class="rounded-circle profile-pic">
                                     </div>
                                     <div class="preview-item-content">
@@ -355,8 +302,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                                 <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg"
-                                        alt="">
+                                    <img class="img-xs rounded-circle"
+                                        src="{{ asset('assets/images/faces/face15.jpg') }}" alt="">
                                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
@@ -399,20 +346,16 @@
             </nav>
             <!-- partial -->
             <div class="main-panel">
-                @yield('main-content')
+                <div class="content-wrapper">
 
+
+                    @yield('main-content')
+
+                </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                            bootstrapdash.com
-                            2020</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                                href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                target="_blank">Bootstrap admin
-                                templates</a> from Bootstrapdash.com</span>
-                    </div>
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between"> </div>
                 </footer>
                 <!-- partial -->
             </div>
@@ -421,28 +364,31 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src='assets/vendors/js/vendor.bundle.base.js'></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script> --}}
+    <script src='{{ asset('assets/vendors/js/vendor.bundle.base.js') }}'></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Plugin js for this page -->
     @yield('page-js')
     <!-- End plugin js for this page -->
 
     <!-- inject:js -->
-    <script src='assets/js/off-canvas.js'></script>
-    <script src='assets/js/hoverable-collapse.js'></script>
-    <script src='assets/js/misc.js'></script>
-    <script src='assets/js/settings.js'></script>
-    <script src='assets/js/todolist.js'></script>
+    <script src='{{ asset('assets/js/off-canvas.js') }}'></script>
+    <script src='{{ asset('assets/js/hoverable-collapse.js') }}'></script>
+    <script src='{{ asset('assets/js/misc.js') }}'></script>
+    <script src='{{ asset('assets/js/settings.js') }}'></script>
+    <script src='{{ asset('assets/js/todolist.js') }}'></script>
     <!-- endinject -->
 
     <!-- CDN Scripts -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> --}}
     <!-- end CDN Scripts -->
 
     @yield('custom-js')
+
+    {{-- @vite(['resources/js/app.js']) --}}
 
 </body>
 

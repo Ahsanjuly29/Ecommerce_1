@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('capacity_types', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
