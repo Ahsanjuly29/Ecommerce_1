@@ -28,9 +28,7 @@ class CapacityTypeController extends Controller
     public function store(CapacityTypeRequest $request)
     {
         try {
-            CapacityType::create([
-                'slug' => $request->slug
-            ]);
+            CapacityType::create($request->validated());
             return back()->withSuccess('Added Succesfully');
         } catch (\Exception $ex) {
             return back()->withError($ex->getMessage());

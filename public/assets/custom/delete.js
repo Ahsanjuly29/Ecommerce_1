@@ -10,11 +10,35 @@ $('.delete-btn').click(function () {
 //
 //  it is used to open multiple delete button
 //
-$(".checkboxes").change(function () {
+$(".checkitem").change(function () {
     if (this.checked) {
         $('#multiple_delete_btn').removeClass('d-none');
     }
+    else if ($(".table input[name='id']:checked").length < 1) {
+        $('#multiple_delete_btn').addClass('d-none');
+        $('#check_all_box').prop('checked', false);
+    }
 });
+
+// Check all boxes
+$(document).ready(function () {
+
+    $('#check_all_box').click(function (event) {
+        if (this.checked) {
+            $('.checkitem').each(function () {
+                this.checked = true;
+                $('#multiple_delete_btn').removeClass('d-none');
+            });
+        } else {
+            $('.checkitem').each(function () {
+                this.checked = false;
+                $('#multiple_delete_btn').addClass('d-none');
+            });
+        }
+    });
+
+});
+
 
 //
 // using selected delete multiple rows data from table
@@ -93,3 +117,8 @@ function commonSwalAlert(selctedIds) {
         }
     });
 }
+
+// Fadeout Messages
+setTimeout(function () {
+    $('.feedback-fadeout').fadeOut('fast');
+}, 3000);

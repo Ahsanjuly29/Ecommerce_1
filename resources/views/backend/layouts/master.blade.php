@@ -24,6 +24,7 @@
     @yield('page-css')
     <!-- End plugin css for this page -->
 
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     @yield('custom-css')
 
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />

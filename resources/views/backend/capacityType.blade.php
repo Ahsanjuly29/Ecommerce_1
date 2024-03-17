@@ -7,7 +7,6 @@
 @endsection
 
 @section('custom-css')
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 @endsection
 <!-- End plugin css for this page -->
 
@@ -74,7 +73,12 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th class="text-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="check_all_box" />
+                                    </div>
+                                </th>
                                 <th class="text-center">Created At</th>
                                 <th class="text-center">Name</th>
                                 <th class="text-right">Action</th>
@@ -86,8 +90,8 @@
                                     <td>
                                         <div class="form-check form-check-danger">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input checkboxes"
-                                                    name="id" value="{{ $capacityType->id }}">
+                                                <input type="checkbox" class="form-check-input checkitem" name="id"
+                                                    value="{{ $capacityType->id }}">
                                             </label>
                                         </div>
                                     </td>
@@ -103,7 +107,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                             <tr>
                                 <td colspan="10">
                                     <button id="multiple_delete_btn" class="btn btn-danger btn-md mr-2 d-none"
